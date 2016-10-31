@@ -1,3 +1,3 @@
 # vue-cnode
 
-> cnodejs with vue@2.x vuex@2.x  
+> cnodejs with vue vuex this version greater than 2.0  

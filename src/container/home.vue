@@ -6,7 +6,6 @@
 
 <script>
   import { getTopics } from '../vuex/actions.js';
-  // import { getterTopics } from '../vuex/getters.js';
 
   export default {
     name: 'home',
@@ -20,7 +19,9 @@
     },
     methods: {
       onClickHandle() {
-        this.getTopics();
+        console.log('here');
+        // this.getTopics();
+        this.$store.dispatch(getTopics());
       }
     }
   }
