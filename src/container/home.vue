@@ -20,8 +20,8 @@
     methods: {
       onClickHandle() {
         console.log('here');
-        // this.getTopics();
-        this.$store.dispatch(getTopics());
+        getTopics(dispatch());
+        // this.$store.dispatch(getTopics());
       }
     }
   }
