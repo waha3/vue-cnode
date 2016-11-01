@@ -9,8 +9,6 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "babel-eslint": "^7.1.0",
-    "eslint": "^3.9.0",
     "isomorphic-fetch": "^2.2.1",
     "mint-ui": "^2.0.4",
     "vue": "^2.0.1",
@@ -19,6 +17,8 @@
     "vuex-router-sync": "^3.0.0"
   },
   "devDependencies": {
+    "babel-eslint": "^7.1.0",
+    "eslint": "^3.9.0",
     "autoprefixer": "^6.4.0",
     "babel-core": "^6.0.0",
     "babel-loader": "^6.0.0",
