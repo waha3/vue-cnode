@@ -1,28 +1,30 @@
 <template>
   <div class="home">
     <button type="button" @click="onClickHandle">111</button>
+    <mt-cell title="标题文字"></mt-cell>
   </div>
 </template>
 
 <script>
-  import { getTopics } from '../vuex/actions.js';
+  // import { getTopics } from '../vuex/actions.js';
 
   export default {
     name: 'home',
-    vuex: {
-      getters: {
-        list: state => state.home.topics
-      },
-      actions: {
-        getTopics
+    computed: {
+      page() {
+        return this.$store.state.home.page;
       }
     },
     methods: {
       onClickHandle() {
-        console.log('here');
-        getTopics(dispatch());
-        // this.$store.dispatch(getTopics());
+        return this.$store.actions.getTopics();
       }
     }
   }
 </script>
+
+<style media="screen">
+  .home {
+    margin-top: 3rem;
+  }
+</style>

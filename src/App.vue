@@ -1,15 +1,16 @@
 <template>
   <div id="app">
-    <!-- <mt-header fixed title="固定在顶部"></mt-header> -->
-    <router-link to="/">首页</router-link>
+    <router-link to="/">
+      <div class="header">
+        <mt-header fixed title="cnodejs"></mt-header>
+      </div>
+    </router-link>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
   import Vue from 'vue';
-  import { Header } from 'minu-ui';
-  // Vue.component(Header.name, Header);
 </script>
 
 <style>
