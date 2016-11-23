@@ -1,23 +1,20 @@
 <template>
   <div class="home">
-    <button type="button" @click="onClickHandle">111</button>
-    <mt-cell title="标题文字"></mt-cell>
+    <div v-for="item in topics">
+      <!-- <mt-cell title="{{item.title}}"></mt-cell> -->
+    </div>
   </div>
 </template>
 
 <script>
-  // import { getTopics } from '../vuex/actions.js';
-
   export default {
     name: 'home',
-    computed: {
-      page() {
-        return this.$store.state.home.page;
-      }
+    created() {
+      this.$store.dispatch('getTopics');
     },
-    methods: {
-      onClickHandle() {
-        return this.$store.dispatch('getTopics');
+    computed: {
+      topics() {
+        return this.$store.state.home;
       }
     }
   }

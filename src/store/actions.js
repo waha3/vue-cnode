@@ -1,8 +1,7 @@
-// import * as api from '../api';
 import * as types from './mutationTypes.js';
-import { get } from '../api/index.js';
+import { fetchTopicLists } from '../api/index.js';
 
 export const getTopics = ({ commit }) => {
-  get('topics');
-  commit(types.GETTOPICS);
+  fetchTopicLists(1, 'all')
+    .then(topics => commit(types.GETTOPICS, 1, topics));
 };

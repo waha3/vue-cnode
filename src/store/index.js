@@ -7,12 +7,8 @@ import * as getters from './getters.js';
 Vue.use(Vuex);
 
 const state = {
-  home: {
-    page: 1,
-    data: []
-  }
+  home: []
 };
-
 
 export default new Vuex.Store({
   state,
