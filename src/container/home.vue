@@ -17,7 +17,7 @@
     },
     methods: {
       onClickHandle() {
-        return this.$store.actions.getTopics();
+        return this.$store.dispatch('getTopics');
       }
     }
   }
