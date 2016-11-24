@@ -6,6 +6,8 @@ import * as getters from './getters.js';
 
 Vue.use(Vuex);
 
+Vue.config.debug = true;
+
 const state = {
   home: {}
 };

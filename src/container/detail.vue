@@ -1,11 +1,17 @@
 <template>
   <div class="detail">
-    hello world
+    <mt-cell title="hello">
+      <avator></avator>
+    </mt-cell>
   </div>
 </template>
 
 <script>
+  import avator from '../components/avator.vue';
   export default {
-    name: 'detail'
+    name: 'detail',
+    component: {
+      avator
+    }
   }
 </script>
