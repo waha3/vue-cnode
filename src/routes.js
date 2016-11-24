@@ -10,9 +10,16 @@ const Home = resolve => {
   });
 };
 
+const Detail = resolve => {
+  require.ensure(['./container/detail'], () => {
+    resolve(require('./container/detail'));
+  });
+};
+
 export default new Router({
   mode: 'history',
   routes: [
-    { path: '/', component: Home }
+    { path: '/', component: Home },
+    { path: '/topic/:id', component: Detail }
   ]
 });

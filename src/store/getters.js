@@ -1,1 +1,1 @@
-// export const getterTopics = (state) => state.home.topics;
+export const getterTopics = state => state.home;
