@@ -21,6 +21,6 @@ export const fetchTopicLists = (page, tab) => {
 
 // 获取文章详情
 export const fetchTopicDetail = (id) => {
-  let path = `topics/${id}`;
+  let path = `topic/${id}`;
   return get(path);
 };

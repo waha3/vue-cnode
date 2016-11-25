@@ -33,7 +33,7 @@
         topics: 'getterTopics'
       }),
       formatTopics() {
-        return this.topics.map(v => Object.assign(v, {
+        return this.topics.map(v => Object.assign({}, v, {
           create_at: moment(v.create_at).fromNow()
         }));
       }
