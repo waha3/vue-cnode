@@ -1,20 +1,17 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import * as actions from './actions.js';
-import mutations from './mutations.js';
 import * as getters from './getters.js';
+import home from './modules/home.js';
+import { createLogger } from 'vuex';
 
 Vue.use(Vuex);
 
-Vue.config.debug = true;
-
-const state = {
-  home: {}
-};
-
 export default new Vuex.Store({
-  state,
   actions,
-  mutations,
-  getters
+  getters,
+  modules: {
+    home
+  },
+  plugins: createLogger
 });

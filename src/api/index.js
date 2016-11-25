@@ -18,3 +18,9 @@ export const fetchTopicLists = (page, tab) => {
   let query = `page=${page}&tab=${tab}`;
   return get('topics', query);
 };
+
+// 获取文章详情
+export const fetchTopicDetail = (id) => {
+  let path = `topics/${id}`;
+  return get(path);
+};

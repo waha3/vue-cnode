@@ -1,41 +1,51 @@
 <template>
   <div class="home">
-    <mt-loadmore
-      :top-method="loadTop"
-      :bottom-method="loadBottom"
-      :bottom-all-loaded="allLoaded"
-      ref="loadmore"
-      @bottom-status-change="bottomChangeHandle"
-    >
-      <mt-cell v-for="item of topics"
+    <div
+      v-infinite-scroll="loadMore"
+      infinite-scroll-disabled="loading"
+      infinite-scroll-distance="10">
+      <mt-cell v-for="item of formatTopics"
         :title="item.title"
         :to="'/topic/' + item.id"
-        :value="moment(createAt).fromNow()">
+        :value="item.create_at">
       </mt-cell>
-    </mt-loadmore>
+    </div>
   </div>
 </template>
 
 <script>
   import moment from 'moment';
   import { mapGetters } from 'vuex';
+  moment.locale('zh-cn');
   export default {
     name: 'home',
+    data() {
+      return {
+        loadMorePayload: {
+          page: 1,
+          type: 'all'
+        },
+        loading: false
+      }
+    },
     computed: {
       ...mapGetters({
         topics: 'getterTopics'
-      })
-    },
-    created() {
-      this.$store.dispatch('getTopics');
+      }),
+      formatTopics() {
+        return this.topics.map(v => Object.assign(v, {
+          create_at: moment(v.create_at).fromNow()
+        }));
+      }
     },
     methods: {
-      loadBottom(id) {
-        this.allLoaded = true;// 若数据已全部获取完毕
-        this.$refs.loadmore.onBottomLoaded(id);
-      },
-      bottomChangeHandle() {
-        // alert('here');
+      loadMore() {
+        this.loading = true;
+        this.$store.dispatch('getTopics', this.loadMorePayload)
+          .then(() => {
+            this.loading = false;
+            this.loadMorePayload.page += 1;
+          });
       }
     }
   }

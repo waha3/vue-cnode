@@ -1,7 +1,24 @@
 import * as types from './mutationTypes.js';
-import { fetchTopicLists } from '../api/index.js';
+import { fetchTopicLists } from '../api';
 
-export const getTopics = ({ commit }) => {
-  fetchTopicLists(1, 'all')
-    .then(topics => commit(types.GETTOPICS, { page: 1, topics }));
+export const getTopics = ({ commit }, data) => {
+  return new Promise((resolve, reject) => {
+    fetchTopicLists(data.page, data.type)
+      .then(topics => {
+        commit(types.GETTOPICS, { page: data.page, topics });
+        resolve();
+      })
+      .catch(err => {
+        window.console.error(err);
+        reject();
+      });
+  });
 };
+
+// export const getTopicDetail = ({ commit }, id) => {
+//   return new Promise((resolve, reject) => {
+//     fetchTopicDetail(id).then(data =>{
+//       commit()
+//     });
+//   });
+// }
