@@ -1,18 +1,23 @@
 <template>
   <div class="card">
     <div class="card_header">
-      hello xxxxx
+      {{title}}
     </div>
+    <div class="line"></div>
     <div class="card_content">
-      xxxxxxx
-      xxxxxxx
+      <slot name="body"></slot>
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'card'
+    name: 'card',
+    props: {
+      title: {
+        type: String
+      }
+    }
   }
 </script>
 
