@@ -22,11 +22,18 @@ const User = resolve => {
   });
 };
 
+const Login = resolve => {
+  require.ensure(['./container/login'], () => {
+    resolve(require('./container/login'));
+  });
+};
+
 export default new Router({
   mode: 'history',
   routes: [
     { path: '/', component: Home },
     { path: '/topic/:id', component: Detail },
-    { path: '/user/:name', component: User }
+    { path: '/user/:name', component: User },
+    { path: '/login', component: Login }
   ]
 });

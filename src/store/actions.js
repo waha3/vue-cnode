@@ -1,5 +1,5 @@
 import * as types from './mutationTypes.js';
-import { fetchTopicLists, fetchTopicDetail, fetchUserInfo } from '../api';
+import { fetchTopicLists, fetchTopicDetail, fetchUserInfo, fetchLogin } from '../api';
 
 export const getTopics = ({ commit }, data) => {
   return new Promise((resolve, reject) => {
@@ -39,6 +39,20 @@ export const getUserInfo = ({ commit }, name) => {
     .catch(err => {
       reject(err);
       window.console.error(err);
+    });
+  });
+};
+
+export const postToken = ({ commit }, token) => {
+  return new Promise((resolve, reject) => {
+    fetchLogin(token)
+    .then(() => {
+      commit(types.POSTLOGIN);
+      resolve();
+    })
+    .catch(err => {
+      window.console.error(err);
+      reject(err);
     });
   });
 };

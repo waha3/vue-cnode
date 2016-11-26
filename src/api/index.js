@@ -13,24 +13,24 @@ const get = (path, query) => {
     .catch(err => window.console.error(err));
 };
 
-// const post = (path, query, data) => {
-//   let url;
-//   if (query) {
-//     url = `https://cnodejs.org/api/v1/${path}?${query}`;
-//   } else {
-//     url = `https://cnodejs.org/api/v1/${path}`;
-//   }
-//
-//   return fetch(url, {
-//     method: 'POST',
-//     body: JSON.stringify(data),
-//     headers: {
-//       'Content-Type': 'application/jso'
-//     }
-//   })
-//     .then(res => res.json())
-//     .catch(err => window.console.error(err));
-// };
+const post = (data, path, query) => {
+  let url;
+  if (query) {
+    url = `https://cnodejs.org/api/v1/${path}?${query}`;
+  } else {
+    url = `https://cnodejs.org/api/v1/${path}`;
+  }
+
+  return fetch(url, {
+    method: 'post',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(res => res.json())
+    .catch(err => window.console.error(err));
+};
 
 // 获取首页文章列表
 export const fetchTopicLists = (page, tab) => {
@@ -48,4 +48,12 @@ export const fetchTopicDetail = (id) => {
 export const fetchUserInfo = (name) => {
   let path = `user/${name}`;
   return get(path);
+};
+
+// 登录
+export const fetchLogin = (token) => {
+  let data = {
+    accesstoken: token
+  };
+  return post(data, 'accesstoken');
 };
