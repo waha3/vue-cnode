@@ -31,6 +31,14 @@ export const getTopicDetail = ({ commit }, id) => {
 
 export const getUserInfo = ({ commit }, name) => {
   return new Promise((resolve, reject) => {
-
+    fetchUserInfo(name)
+    .then(data => {
+      resolve();
+      commit(types.GETUSERINFO, data);
+    })
+    .catch(err => {
+      reject(err);
+      window.console.error(err);
+    });
   });
-}
+};

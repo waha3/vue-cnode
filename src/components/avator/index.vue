@@ -1,12 +1,18 @@
 <template>
   <div class="avator">
-    <img src="https://avatars2.githubusercontent.com/u/12130012?v=3&s=460">
+    <img :src="image">
   </div>
 </template>
 
 <script>
 export default {
-  name: 'avator'
+  name: 'avator',
+  props: {
+    image: {
+      type: String,
+      default: ''
+    }
+  }
 }
 </script>
 
