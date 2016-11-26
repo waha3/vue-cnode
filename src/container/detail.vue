@@ -1,7 +1,9 @@
 <template>
   <div class="detail">
     <mt-cell :title="detail.title">
-      <!-- <avator></avator> -->
+      <router-link v-if="detail.author" :to="{path: '/user/' + detail.author.loginname}" append>
+        <avator></avator>
+      </router-link>
     </mt-cell>
     <div class="content" v-html="detail.content"></div>
   </div>

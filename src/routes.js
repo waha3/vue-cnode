@@ -16,10 +16,17 @@ const Detail = resolve => {
   });
 };
 
+const User = resolve => {
+  require.ensure(['./container/user'], () => {
+    resolve(require('./container/user'));
+  });
+};
+
 export default new Router({
   mode: 'history',
   routes: [
     { path: '/', component: Home },
-    { path: '/topic/:id', component: Detail }
+    { path: '/topic/:id', component: Detail },
+    { path: '/user/:name', component: User }
   ]
 });
