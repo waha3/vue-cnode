@@ -13,7 +13,9 @@
       <mt-tab-item id="tab2">
         <router-link to="/login">登录</router-link>
       </mt-tab-item>
-      <mt-tab-item id="tab3">3</mt-tab-item>
+      <mt-tab-item id="tab3">
+        <router-link to="/profile">用户信息</router-link>
+      </mt-tab-item>
     </mt-tabbar>
   </div>
 </template>

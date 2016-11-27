@@ -46,9 +46,9 @@ export const getUserInfo = ({ commit }, name) => {
 export const postToken = ({ commit }, token) => {
   return new Promise((resolve, reject) => {
     fetchLogin(token)
-    .then(() => {
-      commit(types.POSTLOGIN);
-      resolve();
+    .then(data => {
+      commit(types.POSTLOGIN, data);
+      resolve(data);
     })
     .catch(err => {
       window.console.error(err);

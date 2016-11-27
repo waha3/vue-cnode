@@ -17,17 +17,27 @@
 </template>
 
 <script>
+import { setToken } from '../util/auth.js';
 export default {
   name: 'login',
   data() {
     return {
-      token: '90821d3b-f348-4e74-8fb3-10d765114d20'
+      token: ''
+    }
+  },
+  computed: {
+    loginInfo() {
+      return this.$store.state.login;
     }
   },
   methods: {
     loginClickHandle() {
       this.$store.dispatch('postToken', this.token)
-        .then(data => console.log(data))
+        .then(data => {
+          if (data.success) {
+            setToken(this.token);
+          }
+        })
         .catch(err => console.error(err));
     }
   }

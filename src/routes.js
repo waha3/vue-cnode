@@ -28,12 +28,26 @@ const Login = resolve => {
   });
 };
 
+const Profile = resolve => {
+  require.ensure(['./container/profile'], () => {
+    resolve(require('./container/profile'));
+  });
+};
+
+const Post = resolve => {
+  require.ensure(['./container/post'], () => {
+    resolve(require('./container/post'));
+  });
+};
+
 export default new Router({
   mode: 'history',
   routes: [
     { path: '/', component: Home },
     { path: '/topic/:id', component: Detail },
     { path: '/user/:name', component: User },
-    { path: '/login', component: Login }
+    { path: '/login', component: Login },
+    { path: '/profile', component: Profile },
+    { path: '/post', component: Post }
   ]
 });

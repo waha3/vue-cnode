@@ -22,13 +22,14 @@ const post = (data, path, query) => {
   }
 
   return fetch(url, {
-    method: 'post',
-    body: JSON.stringify(data),
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json'
-    }
+    },
+    body: JSON.stringify(data)
   })
     .then(res => res.json())
+    .then(_data => _data)
     .catch(err => window.console.error(err));
 };
 
