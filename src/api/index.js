@@ -58,3 +58,8 @@ export const fetchLogin = (token) => {
   };
   return post(data, 'accesstoken');
 };
+
+// 新建主题
+export const createTopic = (data) => {
+  return post(data, 'topics');
+};

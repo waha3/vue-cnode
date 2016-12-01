@@ -6,6 +6,7 @@ import home from './modules/home.js';
 import detail from './modules/detail.js';
 import user from './modules/user.js';
 import login from './modules/login.js';
+import post from './modules/post.js';
 import { createLogger } from 'vuex';
 
 Vue.use(Vuex);
@@ -17,7 +18,8 @@ export default new Vuex.Store({
     home,
     detail,
     user,
-    login
+    login,
+    post
   },
   plugins: createLogger
 });

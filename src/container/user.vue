@@ -27,6 +27,7 @@
       <div slot="body">
         <mt-cell
           v-for="item of user.recent_replies"
+          :to="'/topic/' + item.id"
           :title="item.title">
         </mt-cell>
       </div>

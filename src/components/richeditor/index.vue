@@ -1,12 +1,16 @@
 <template>
   <div class="richeditor">
-    hhaha
+    <div id="editor"></div>
   </div>
 </template>
 
 <script>
+  import { init } from './init.js';
   export default {
-    name: 'richeditor'
+    name: 'richeditor',
+    mounted() {
+      init();
+    }
   }
 </script>
 
