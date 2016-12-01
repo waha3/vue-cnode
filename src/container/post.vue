@@ -19,7 +19,8 @@
 
 <script>
   import editor from '../components/richeditor';
-  import { getToken } from '../util/auth.js'
+  import { getToken } from '../util/auth.js';
+  import { Toast } from 'mint-ui';
   export default {
     name: 'post',
     components: {
@@ -57,7 +58,17 @@
         };
         this.$store.dispatch('postTopics', data)
         .then(res => {
-          console.log(res);
+          let toast;
+          if (res.success) {
+            toast = Toast({
+              message: '发布成功'
+            });
+          } else {
+            toast = Toast({
+              message: '发布失败'
+            });
+          }
+          setTimeout(() => toast.close(), 1000);
         });
       }
     }
